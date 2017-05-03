@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Stadtspaziergang Wien</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
@@ -18,27 +19,36 @@
         h1 {
             text-align: center;
         }
-
+        /*
         #wienMap {
             width: 900px;
             height: 600px;
             border: 1px solid black;
             margin: auto;
         }
+		*/
+		body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #wienMap {
+            height: 100vh;
+            width: 100vw;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Stadtspaziergang Wien</h1>
+    <!--<h1>Stadtspaziergang Wien</h1>  -->
 
     <div id="wienMap"></div>
-    <h3>Quelle Geodaten</h3>
+     <!--<h3>Quelle Geodaten</h3> 
     <p>
     Stadt Wien � <a href="http://data.wien.gv.at/">data.wien.gv.at</a><br>
     <a href="">Web Feature Service (WFS) - Wien</a><br>
     CC BY 3.0 �sterreich<br>
-    </p>
-
+    </p> -->
+	
     <script>
         // WMTS-Layer definieren - Quelle: http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
         // TODO: WMTS-Layer Wien, Luftbild 1956 hinzuf�gen - Quelle: http://maps.wien.gv.at/wmts/1.0.0/WMTSCapabilities.xml (nach lb1956 suchen und dann wie bei basemap.at die ResourceURL anpassen, Datenquelle: Stadt Wien � data.wien.gv.at)
@@ -76,9 +86,23 @@
         // Karte definieren und Ausschnitt setzen
         var map = L.map('wienMap', {
             layers: [layers.bmapgrau],
-            center: [48.20833, 16.373064],
-            zoom: 12
+            //center: [48.20833, 16.373064],
+            //zoom: 12
         });
+		
+		// Standort auf User Zoomen
+		map.locate({setView: true, maxZoom: 16});
+		
+		function onLocationFound(e) {
+             var radius = e.accuracy / 36.5;
+
+            L.marker(e.latlng).addTo(map)
+            .bindPopup("Sie befinden sich maximal " + radius + " Meter von diesem Punkt entfernt").openPopup();
+
+            L.circle(e.latlng, radius).addTo(map);
+        }
+
+map.on('locationfound', onLocationFound);
 
         // Ma�stab hinzuf�gen
         L.control.scale({

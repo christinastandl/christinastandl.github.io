@@ -109,17 +109,16 @@
         // nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
         gpxTrack.on('ready', function () {
             // Popup hinzufügen
-            var markup = '<h3>Adlerweg-Etappe 8: Erfurter Hütte – Lamsenjochhütte </h3>';
-            markup += '<p>Diese Etappe am Adlerweg beginnt entweder mit einer Seilbahnfahrt von der Erfurter Hütte hinunter nach Maurach oder startet direkt in Maurach. Weiter führt die Route am Achensee entlang nach Pertisau und ins sanft ansteigende Falzthurntal bis zur Gramaialm.</p>'
-            markup += '<li>Ausgangspunkt: Erfurter Hütte</li>';
-            markup += '<li>Endpunkt: Lamsenjochhütte</li>';
-            markup += '<li>Höhenmeter bergauf: 1030</li>';
-            markup += '<li>Höhenmeter bergab: 70</li>';
-            markup += '<li>Höchster Punkt: 1949</li>';
-            markup += '<li>Schwierigkeitsgrad: mittelschwierig</li>';
-            markup += '<li>Streckenlänge (in km): 17</li>';
-            markup += '<li>Gehzeit (in Stunden): 2</li>';
-            markup += '<li>Einkehrmöglichkeiten: Erfurter Hütte, Berggasthof Rofan, Mauritzalm, Falzthurnalm, Sennhütte, Gramaialm, Lamsenjochhütte</li>';
+            var markup = '<h3>Adlerweg-Etappe 16: Leutasch/Ahrn - Ehrenwald </h3>';
+            markup += '<li>Ausgangspunkt:Leutasch/Ahrn</li>';
+            markup += '<li>Endpunkt: Ehrenwald</li>';
+            markup += '<li>Höhenmeter bergauf: 590</li>';
+            markup += '<li>Höhenmeter bergab: 730</li>';
+            markup += '<li>Höchster Punkt:1597</li>';
+            markup += '<li>Schwierigkeitsgrad: leicht</li>';
+            markup += '<li>Streckenlänge (in km): 23</li>';
+            markup += '<li>Gehzeit (in Stunden): 7</li>';
+            markup += '<li>Einkehrmöglichkeiten: Gaistalalm, Tillfussalm, Erwalder Alm</li>';
             gpxTrack.bindPopup(markup, { maxWidth : 450 });
 
             // Ausschnitt setzen
@@ -133,13 +132,9 @@
     
 
 		var huts = [
-		L.marker([47.44167, 11.76295], {title: "Erfurter Hütte", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
-		L.marker([47.44113, 11.76400], {title: "Berggasthof Rofan", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
-		L.marker([47.44377,11.76421], {title: "Mauritzalm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
-		L.marker([47.42651,11.64792], {title: "Falzthurnalm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
-		L.marker([47.425938, 11.646900], {title: "Sennhütte ", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
-		L.marker([47.402757, 11.616475], {title: "Gramaialm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
-		L.marker([47.38005,11.60356], {title: "Lamsenjochhütte", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) })
+		L.marker([47.368902, 11.049565], {title: "Gaistalalm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
+		L.marker([47.371553, 11.039956], {title: "Tillfussalm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
+		L.marker([47.385303, 10.969122], {title: "Erwalder Alm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) })
 		];
 		
 		var hutslayer = L.featureGroup();
@@ -156,15 +151,16 @@
 		}});*/
 
        
-		L.marker([47.441317,11.7635382], {title: "Start", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/start.png", iconAnchor: [12, 25]},) })
+		L.marker([47.36997490,11.14383540], {title: "Start", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/start.png", iconAnchor: [12, 25]},) })
         .addTo(map);
         
       
-		L.marker([47.3801212, 11.60355], {title: "Ende", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/finish.png", iconAnchor: [12, 25]}) })
+		L.marker([47.39899730,10.91898590], {title: "Ende", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/finish.png", iconAnchor: [12, 25]}) })
         .addTo(map);
     
-        L.marker([47.441554, 11.763639], {title: "Adlerblick Rofan", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/blick.png", iconAnchor: [12, 25]}) })
-        .addTo(map);
+        /* ADLERBLICK
+		L.marker([, ], {title: "Adlerblick ", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/blick.png", iconAnchor: [12, 25]}) })
+        .addTo(map);*/
 
         
         var layerControl = L.control.layers({
@@ -175,7 +171,7 @@
             "basemap.at - ORTHOFOTO": layers.bmaporthofoto30cm,
             "OpenStreetMap": layers.osm,
         },{
-                "Adlerweg Etappe 8" : gpxTrack
+                "Adlerweg Etappe 16" : gpxTrack
             }).addTo(map);
     
     

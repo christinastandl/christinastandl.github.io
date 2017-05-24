@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Adlerweg - Etappe 16</title>
+
+    <link rel="stylesheet" href="https://christinastandl.github.io/Adlerweg/js/leaflet/leaflet.css" />
+	<link rel="stylesheet" href="https://christinastandl.github.io/Adlerweg/js/leaflet-elevation/leaflet.elevation-0.0.4.css" />
+    
+    <script src="https://christinastandl.github.io/Adlerweg/js/leaflet/leaflet.js"></script>
+	<script src="https://christinastandl.github.io/Adlerweg/js/leaflet-elevation/leaflet.elevation-0.0.4.min.js"></script>
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+       
+        #map {
+        width : 1024px;
+        height : 600px;
+        align-self: center;
+        outline-color: black;
+        outline-width: 2px;
+        margin-left: 100px;
+        margin-right: 100px;   
+        }
+        
+        huts {
+            margin-left: -50px;
+            margin-top: -50px;
+            
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1> Adlerweg Etappe Nr.16: Leutasch/Ahrn - Ehrenwald </h1>
+    <p>Vorbei an den lieblichen Almen des Gaistals und entlang des natürlichen Bachbetts der Leutascher Ache führt diese Adlerweg-Etappe in Richtung Zugspitze.</p>
+
+    <div id=map></div>
+    
+    <a href="http://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-16-leutasch-ehrwald">Website Adlerweg Etappe Nr.16</a>
+    <br>
+    <a href="https://github.com/csat6446" >Autorin: Christina Standl</a>
+<script>
+    
+        var layers = {
+            geolandbasemap: L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapgrau: L.tileLayer("https://{s}.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapoverlay: L.tileLayer("https://{s}.wien.gv.at/basemap/bmapoverlay/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaphidpi: L.tileLayer("https://{s}.wien.gv.at/basemap/bmaphidpi/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaporthofoto30cm: L.tileLayer("https://{s}.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains: ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution: 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            osm: L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                subdomains: ['a', 'b', 'c'],
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            })
+        };
+
+
+        // Karte definieren
+        var map = L.map('map', {
+            layers: [layers.geolandbasemap],
+            center : [47.37621, 10.96805],
+            zoom : 12
+        });
+    
+
+
+        // Maßstab hinzufügen
+        L.control.scale({
+            maxWidth: 200,
+            metric: true,
+            imperial: false
+        }).addTo(map);
+
+    
+    var profileControl = L.control.elevation({
+            position : 'bottomright',
+            theme : 'steelblue-theme',
+        });
+        profileControl.addTo(map);
+
+        // GPX Track laden
+        gpxTrack = omnivore.gpx('https://csat6332.github.io/Adlerweg/Data/AdlerwegEtappe08.gpx').addTo(map);
+
+        // nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
+        gpxTrack.on('ready', function () {
+            // Popup hinzufügen
+            var markup = '<h3>Adlerweg-Etappe 8: Erfurter Hütte – Lamsenjochhütte </h3>';
+            markup += '<p>Diese Etappe am Adlerweg beginnt entweder mit einer Seilbahnfahrt von der Erfurter Hütte hinunter nach Maurach oder startet direkt in Maurach. Weiter führt die Route am Achensee entlang nach Pertisau und ins sanft ansteigende Falzthurntal bis zur Gramaialm.</p>'
+            markup += '<li>Ausgangspunkt: Erfurter Hütte</li>';
+            markup += '<li>Endpunkt: Lamsenjochhütte</li>';
+            markup += '<li>Höhenmeter bergauf: 1030</li>';
+            markup += '<li>Höhenmeter bergab: 70</li>';
+            markup += '<li>Höchster Punkt: 1949</li>';
+            markup += '<li>Schwierigkeitsgrad: mittelschwierig</li>';
+            markup += '<li>Streckenlänge (in km): 17</li>';
+            markup += '<li>Gehzeit (in Stunden): 2</li>';
+            markup += '<li>Einkehrmöglichkeiten: Erfurter Hütte, Berggasthof Rofan, Mauritzalm, Falzthurnalm, Sennhütte, Gramaialm, Lamsenjochhütte</li>';
+            gpxTrack.bindPopup(markup, { maxWidth : 450 });
+
+            // Ausschnitt setzen
+            map.fitBounds(gpxTrack.getBounds());
+
+            // Höhenprofil erzeugen
+            gpxTrack.eachLayer(function(layer) {
+                profileControl.addData(layer.feature);
+            });
+        });
+    
+
+		var huts = [
+		L.marker([47.44167, 11.76295], {title: "Erfurter Hütte", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
+		L.marker([47.44113, 11.76400], {title: "Berggasthof Rofan", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
+		L.marker([47.44377,11.76421], {title: "Mauritzalm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
+		L.marker([47.42651,11.64792], {title: "Falzthurnalm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
+		L.marker([47.425938, 11.646900], {title: "Sennhütte ", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
+		L.marker([47.402757, 11.616475], {title: "Gramaialm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
+		L.marker([47.38005,11.60356], {title: "Lamsenjochhütte", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) })
+		];
+		
+		var hutslayer = L.featureGroup();
+		for (var i=0; i<huts.length; i++) {
+			hutslayer.addLayer(huts[i]);
+		}
+		hutslayer.addTo(map);
+		/*map.on("zoomend", function() {
+		if (map.getZoom() >= 15 ) {
+			map.addLayer(hutslayer);
+		}
+		else {
+		map.removeLayer(hutslayer);
+		}});*/
+
+       
+		L.marker([47.441317,11.7635382], {title: "Start", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/start.png", iconAnchor: [12, 25]},) })
+        .addTo(map);
+        
+      
+		L.marker([47.3801212, 11.60355], {title: "Ende", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/finish.png", iconAnchor: [12, 25]}) })
+        .addTo(map);
+    
+        L.marker([47.441554, 11.763639], {title: "Adlerblick Rofan", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/blick.png", iconAnchor: [12, 25]}) })
+        .addTo(map);
+
+        
+        var layerControl = L.control.layers({
+            "basemap.at - STANDARD": layers.geolandbasemap,
+            "basemap.at - GRAU": layers.bmapgrau,
+            "basemap.at - OVERLAY": layers.bmapoverlay,
+            "basemap.at - HIGH-DPI": layers.bmaphidpi,
+            "basemap.at - ORTHOFOTO": layers.bmaporthofoto30cm,
+            "OpenStreetMap": layers.osm,
+        },{
+                "Adlerweg Etappe 8" : gpxTrack
+            }).addTo(map);
+    
+    
+</script>
+</body>
+</html>

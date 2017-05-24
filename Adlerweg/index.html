@@ -106,7 +106,7 @@
         // GPX Track laden
         gpxTrack = omnivore.gpx('https://csat6332.github.io/Adlerweg/Data/AdlerwegEtappe16.gpx').addTo(map);
 
-        // nach erfolgreichem Laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
+        // nach laden Popup hinzufügen, Ausschnitt setzen und Höhenprofil erzeugen
         gpxTrack.on('ready', function () {
             // Popup hinzufügen
             var markup = '<h3>Adlerweg-Etappe 16: Leutasch/Ahrn - Ehrenwald </h3>';
@@ -130,7 +130,7 @@
             });
         });
     
-
+        // Hüttenmarker hinzufügen
 		var huts = [
 		L.marker([47.368902, 11.049565], {title: "Gaistalalm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
 		L.marker([47.371553, 11.039956], {title: "Tillfussalm", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/hut.png", iconAnchor: [12, 25]}) }),
@@ -150,11 +150,11 @@
 		map.removeLayer(hutslayer);
 		}});*/
 
-       
+        // Marker Start hinzufügen
 		L.marker([47.36997490,11.14383540], {title: "Start", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/start.png", iconAnchor: [12, 25]},) })
         .addTo(map);
         
-      
+        // Marker Ziel hinzufügen
 		L.marker([47.39899730,10.91898590], {title: "Ende", icon: L.icon({ iconUrl:"https://csat6332.github.io/Adlerweg/icons/finish.png", iconAnchor: [12, 25]}) })
         .addTo(map);
     

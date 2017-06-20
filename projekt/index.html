@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Radfahren im Salzburger Land</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+    <!-- GeoJSON Datenskripts -->
+    <script src="js/radwegLinien.json.js"></script>
+    <script src="js/Burgen.json.js"></script>
+    <script src="js/Naturpark.json.js"></script>
+	<script src="js/radelnland.js"></script>
+    
+    <script src="js/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="css/MarkerCluster.css" />
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+
+    <style>
+
+
+        #sMap {
+            width: 900px;
+            height: 600px;
+            border: 1px solid black;
+            margin: auto;
+        }
+		
+    </style>
+</head>
+
+<body>
+    <h1>Radln im Salzburger Land</h1>
+
+    <div id="sMap"></div>
+
+	<br>
+		<!-- ACHTUNG NOCH ÜBERPRÜFEN -->
+	<h2> Fahrradurlaub in der Stadt Salzburg</h2>
+	<p class="navigation"> Für die Stadt Salzburg haben wir <a href="indexstadt.html">hier</a> noch einige Informationen für Sie zusammengetragen.
+	</p>
+	<br>
+	<br>
+	<br>
+	<nav>
+		<a class="previous" href="burgen.html">Burgen und Schlösser Salzburg</a>
+		<span class="current">Radfahrland Salzburg</span>
+		<a class="next" href="Naturparks.html">Naturparks in Salzburg</a>
+	</nav> 
+	
+	
+	<p class="author">Hannah Geuder, Christina Standl</p>
+    <p>Quelle Geodaten: Stadt Wien – <a href="http://data.wien.gv.at/">data.wien.gv.at</a>
+    Web Feature Service (WFS) - Wien
+	CC BY 3.0 Österreich
+    </p>
+
+
+    </body>

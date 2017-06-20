@@ -1,0 +1,98 @@
+html {
+    background: #C7C9C9;
+    background-image: url(../bilder/Natur.jpg)
+}
+body{
+    max-width: 600px;
+    padding: 2em 2em 4em;
+    margin: 0 auto;
+    background-color:#E5F7F8;
+}
+h1{
+    font-family: Calibri;
+    font-weight: bold;
+    text-align: center;
+    font-size: 28px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color:#26B11F;
+}
+        
+h2{
+    font-family: Calibri;
+    font-weight: lighter;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    color:#0F1010;
+}
+h3{
+    font-family: Calibri;
+    font-weight: normal;
+    font-style:normal;
+    text-align: left;
+    text-decoration: underline;
+    font-size: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    color:#1E8A19;
+}
+h4{
+    font-family: Calibri;
+    font-weight: normal;
+    font-style: oblique;
+    text-decoration: underline;
+    text-align: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color:#0F1010;
+}
+p{
+    font-family: Calibri;
+    font-weight: normal;
+    font-style: normal;
+    text-align: justify;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color:#0F1010;
+    
+}
+img{
+    background: transparent;
+    border: none;
+    width: 480px;
+    height: 320px;
+}
+a{
+    font-family: Calibri;
+    font-weight: bold;
+    font-style: oblique;
+    text-decoration: underline;
+    text-align: right;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color:#0F1010;
+    
+}
+.previous, .next{
+    font-family: Calibri;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: #0A2F9F;
+}
+nav{
+    font-family: Calibri;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-style: none;
+    background-color: #C5E5E6;
+    
+}

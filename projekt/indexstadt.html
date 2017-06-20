@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Stadtspaziergang Salzburg</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	
+    <!-- GeoJSON Datenskripts -->
+	<script src="js/radelnstadt.js"></script>
+    <script src="js/poi.js"></script>
+    <script src="js/radroutenstadt.js"></script>
+    <script src="js/spielplaetze.js"></script>
+	<script src="js/wifistandorte.js"></script>
+
+   
+
+    <style>
+       #sMap {
+            width: 900px;
+            height: 600px;
+            border: 1px solid black;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Radfahren in der Stadt Salzburg</h1>
+
+    <div id="sMap"></div>
+
+	<br>
+	<!-- ACHTUNG NOCH ÜBERPRÜFEN -->
+	<h2> Fahrradurlaub im Salzburger Land </h2>
+	<p class="navigation"> Falls Sie Urlaub in der Stadt Salzburg machen und ebenfalls mit den Rad mobil sein möchten, <br> haben wir <a href="index.html">hier</a> einige Informationen für Sie zusammengetragen.
+	</p>
+	<p class="author">Hannah Geuder, Christina Standl</p>
+
+    <p> Quelle Geodaten: Stadt Wien – <a href="http://data.wien.gv.at/">data.wien.gv.at</a>
+    Web Feature Service (WFS) - Wien
+	CC BY 3.0 Österreich
+    </p>
+
+	
+    </body>
